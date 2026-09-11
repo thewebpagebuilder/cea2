@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   CEA Design Tokens
+   Palette: forest green, saddle brown, cream, charcoal.
+   No gradients used for decoration; only flat, high-contrast surfaces.
+------------------------------------------------------------------- */
+@theme {
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
+    Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --color-forest-50: #f2f6f1;
+  --color-forest-100: #dfe9dd;
+  --color-forest-200: #bfd3bd;
+  --color-forest-300: #94b492;
+  --color-forest-400: #648f65;
+  --color-forest-500: #42734a;
+  --color-forest-600: #2f5a3b;
+  --color-forest-700: #26472f;
+  --color-forest-800: #1e3727;
+  --color-forest-900: #15271d;
+
+  --color-saddle-50: #faf5ee;
+  --color-saddle-100: #f1e6d6;
+  --color-saddle-200: #e2cbae;
+  --color-saddle-300: #cfa87c;
+  --color-saddle-400: #b98653;
+  --color-saddle-500: #a56d3c;
+  --color-saddle-600: #8b5730;
+  --color-saddle-700: #6f4428;
+  --color-saddle-800: #573724;
+  --color-saddle-900: #3d271a;
+
+  --color-cream-50: #fdfbf6;
+  --color-cream-100: #f8f3e9;
+  --color-cream-200: #efe6d6;
+  --color-cream-300: #e2d5bf;
+
+  --color-charcoal-500: #6b6f6c;
+  --color-charcoal-600: #4c524e;
+  --color-charcoal-700: #363b38;
+  --color-charcoal-800: #232724;
+  --color-charcoal-900: #171a18;
+
+  --color-brass-500: #b08d2f;
+  --color-brass-600: #8f7124;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-charcoal-800);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    color: var(--color-forest-800);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  /* Visible, consistent focus ring for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 3px solid var(--color-brass-500);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--color-forest-200);
+    color: var(--color-forest-900);
+  }
+}
+
+@layer components {
+  .container-cea {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-saddle-700);
+  }
+
+  .rule-hair {
+    height: 1px;
+    background: var(--color-saddle-200);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 2px;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .btn-primary {
+    background: var(--color-forest-700);
+    color: var(--color-cream-50);
+    border: 1px solid var(--color-forest-700);
+  }
+  .btn-primary:hover {
+    background: var(--color-forest-800);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-forest-800);
+    border: 1px solid var(--color-forest-700);
+  }
+  .btn-secondary:hover {
+    background: var(--color-forest-50);
+  }
+
+  .btn-saddle {
+    background: var(--color-saddle-700);
+    color: var(--color-cream-50);
+    border: 1px solid var(--color-saddle-700);
+  }
+  .btn-saddle:hover {
+    background: var(--color-saddle-800);
+  }
+
+  .field {
+    width: 100%;
+    border: 1px solid var(--color-saddle-200);
+    background: #fff;
+    border-radius: 2px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-charcoal-800);
+  }
+  .field:focus {
+    border-color: var(--color-forest-600);
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-saddle-200);
+    border-radius: 3px;
+  }
+
+  /* Photo placeholder: authentic local imagery is captured on-site by CEA
+     volunteers; boxes reserve exact space so there is zero layout shift. */
+  .photo-frame {
+    background-color: var(--color-forest-100);
+    background-image:
+      linear-gradient(
+        135deg,
+        rgba(38, 71, 47, 0.16) 0 25%,
+        rgba(232, 214, 187, 0.25) 25% 50%
+      );
+    background-size: 14px 14px;
+    border: 1px solid var(--color-forest-200);
+    display: flex;
+    align-items: flex-end;
+    padding: 0.75rem;
+  }
+}
+
+@layer utilities {
+  /* Purposeful micro-interaction: fade + rise on first scroll into view.
+     Uses transform/opacity only (compositor friendly, no layout shift). */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    transition:
+      opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .btn,
+    .lift {
+      transition: none;
+    }
+  }
+
+  .lift {
+    transition:
+      transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      box-shadow 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      border-color 220ms ease;
+  }
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px -14px rgba(21, 39, 29, 0.45);
+    border-color: var(--color-forest-300);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--color-forest-800);
+    color: var(--color-cream-50);
+    padding: 0.75rem 1.25rem;
+  }
+  .skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+}
